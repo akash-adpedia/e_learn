@@ -2,7 +2,7 @@ import { generateToken } from '../../authentication/authentication';
 import AppError from '../../common/appError';
 import { HttpStatus } from '../../common/httpStatus';
 // import { sendOtp } from '../../services/twilioService';
-import { IOtpBody, IUserBody } from '../../types/user/userTypes';
+import { IOtpBody, IUserBody } from '../../types/userTypes';
 import {
   checkUserExist,
   createUser,

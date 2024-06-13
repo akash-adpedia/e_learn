@@ -68,16 +68,7 @@ paths:
                   result:
                     type: string
                     example: ''
-        401:
-          description: Unauthorized response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: Unauthorized user
+
   /api/user/verify-otp:
     post:
       summary: Verify OTP
@@ -117,16 +108,7 @@ paths:
                       token:
                         type: string
                         example: xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-        401:
-          description: Unauthorized response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: Unauthorized user
+
   /api/user/upload-avatar:
     post:
       summary: Upload Avatar
@@ -163,16 +145,6 @@ paths:
                   imageUrl:
                     type: string
                     example: '/upload/avatar/filename.png'
-        400:
-          description: Bad Request response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: Bad request
         401:
           description: Unauthorized response
           content:
@@ -180,9 +152,12 @@ paths:
               schema:
                 type: object
                 properties:
-                  error:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
                     type: string
-                    example: Unauthorized user
+                    example: JWT token is required.
 
 components:
   securitySchemes:

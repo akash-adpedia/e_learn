@@ -1,4 +1,4 @@
-import { IUserBody } from '../../types/user/userTypes';
+import { IUserBody } from '../../types/userTypes';
 import { ObjectID } from '../../utils/objectIdParser';
 import usersModel from '../models/userModel';
 

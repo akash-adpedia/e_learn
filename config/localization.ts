@@ -11,7 +11,7 @@ export const responseMessages = {
   unauthorized_access: 'Unauthorized access.',
   invalid_token: 'Invalid token',
   unauthorized_user: 'Unauthorized user',
-  jwt_token_required: 'JWT token are required.',
+  jwt_token_required: 'JWT token is required.',
   fields_cannot_modify: 'Fields cannot be modify',
   otp_verify_success: 'OTP verified successfully',
   registration_success: 'Registered user successfully',

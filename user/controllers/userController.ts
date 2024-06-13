@@ -6,7 +6,7 @@ import {
 } from '../useCases/userUseCase';
 import asyncHandler from 'express-async-handler';
 import { responseMessages } from '../../config/localization';
-import { IOtpBody, IUserBody } from '../../types/user/userTypes';
+import { IOtpBody, IUserBody } from '../../types/userTypes';
 
 export const registerUser = asyncHandler(async (req: Request, res: Response) => {
   const data = req.body as IUserBody;
