@@ -25,7 +25,7 @@ function setupSwagger(app: Application, port: number) {
     res.send(swaggerSpec);
   });
 
-  logger.info(`Docs available at http://localhost:${port}/api/docs`);
+  logger.info(`Docs available at /api/docs`);
 }
 
 export default setupSwagger;
