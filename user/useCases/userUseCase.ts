@@ -1,7 +1,7 @@
 import { generateToken } from '../../authentication/authentication';
 import AppError from '../../common/appError';
 import { HttpStatus } from '../../common/httpStatus';
-// import { sendOtp } from '../../services/twilioService';
+import { sendOtp } from '../../services/twilioService';
 import { IOtpBody, IUserBody } from '../../types/userTypes';
 import {
   checkUserExist,
@@ -18,7 +18,7 @@ export const registerUserUseCase = async (data: IUserBody): Promise<boolean> => 
   if (userExist) throw new AppError('User Already Exist', HttpStatus.BAD_REQUEST);
   //send an otp to the mobileNumber provided
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
-  // await sendOtp(data.mobileNumber, otp);
+  await sendOtp(data.mobileNumber, otp);
   //if not insert the data in database
   await createUser(data, otp);
   return true;
