@@ -24,12 +24,13 @@ const registerUserUseCase = async (data) => {
 };
 exports.registerUserUseCase = registerUserUseCase;
 const verifyOtpUseCase = async (data) => {
-    const { mobileNumber, otp } = data;
+    const { mobileNumber, otp, deviceId, deviceType } = data;
     const otpCheck = await (0, registerUserRepo_1.verifyOtp)(mobileNumber, otp);
     if (!otpCheck)
         throw new appError_1.default('Invalid OTP', httpStatus_1.HttpStatus.BAD_REQUEST);
     await (0, registerUserRepo_1.setUserVerified)(otpCheck._id);
     const token = (0, authentication_1.generateToken)({ role: 'user', userId: otpCheck._id });
+    await (0, registerUserRepo_1.saveUserToken)(otpCheck._id, deviceId, deviceType, token);
     return { token };
 };
 exports.verifyOtpUseCase = verifyOtpUseCase;

@@ -1,5 +1,6 @@
-import { IUserBody } from '../../types/userTypes';
+import { IUserAuth, IUserBody } from '../../types/userTypes';
 import { ObjectID } from '../../utils/objectIdParser';
+import userAuthModel from '../models/userAuthModel';
 import usersModel from '../models/userModel';
 
 export const checkUserExist = async (
@@ -36,6 +37,14 @@ export const setUserVerified = async (id: string): Promise<{ _id: string } | nul
   );
 };
 
+export const saveUserToken = async (
+  userId: string,
+  deviceId: string,
+  deviceType: string,
+  authToken: string,
+): Promise<Partial<IUserAuth> | null> => {
+  return await userAuthModel.create({ userId, deviceId, deviceType, authToken });
+};
 export const uploadAvatar = async (
   id: string,
   imageUrl: string,

@@ -12,6 +12,15 @@ export interface IUsers extends Document {
   otp?: string;
   mobileNumberVerified?: boolean;
   isDeleted?: boolean;
+  gender: string;
+}
+
+export interface IUserAuth extends Document {
+  userId: string;
+  deviceId: string;
+  deviceType: string;
+  authToken: string;
+  isActive: boolean;
 }
 
 export interface IUserBody {
@@ -22,9 +31,12 @@ export interface IUserBody {
   email?: string;
   parentName?: string;
   parentDob?: string;
+  gender: string;
 }
 
 export interface IOtpBody {
   mobileNumber: number;
   otp: string;
+  deviceId: string;
+  deviceType: "web" | "mobile";
 }

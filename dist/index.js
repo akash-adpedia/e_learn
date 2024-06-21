@@ -21,5 +21,5 @@ app.use(errorHandleMiddleware_1.default);
 const port = configKeys_1.default.PORT;
 app.listen(port, () => {
     logger_1.default.info(`application is running at port ${port}`);
-    (0, swaggerConfig_1.default)(app, port);
+    (0, swaggerConfig_1.default)(app);
 });

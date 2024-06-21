@@ -23,5 +23,5 @@ const port = configKeys.PORT;
 
 app.listen(port, () => {
   logger.info(`application is running at port ${port}`);
-  setupSwagger(app, port);
+  setupSwagger(app);
 });

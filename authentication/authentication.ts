@@ -2,9 +2,7 @@ import jwt, { JwtPayload } from 'jsonwebtoken';
 import configKeys from '../configKeys';
 
 export function generateToken(payload: { role: string; userId: string }): string {
-  const token = jwt.sign(payload, configKeys.JWT_SECRET, {
-    expiresIn: '2d',
-  });
+  const token = jwt.sign(payload, configKeys.JWT_SECRET);
   return token;
 }
 

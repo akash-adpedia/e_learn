@@ -6,6 +6,7 @@ const usersSchema = new mongoose_1.Schema({
     mobileNumber: { type: Number, required: true },
     dob: { type: String, required: true },
     userType: { type: String, enum: ['child', 'teenager', 'adult'], required: true },
+    gender: { type: String, required: true },
     email: { type: String },
     parentName: { type: String },
     parentDob: { type: String },

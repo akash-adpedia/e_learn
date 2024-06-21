@@ -17,7 +17,7 @@ const options: swaggerJsdoc.Options = {
 
 const swaggerSpec = swaggerJsdoc(options);
 
-function setupSwagger(app: Application, port: number) {
+function setupSwagger(app: Application) {
   app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
   app.get('/docs.json', (req: Request, res: Response) => {
@@ -25,7 +25,7 @@ function setupSwagger(app: Application, port: number) {
     res.send(swaggerSpec);
   });
 
-  logger.info(`Docs available at /api/docs`);
+  logger.info('Docs available at /api/docs');
 }
 
 export default setupSwagger;

@@ -15,7 +15,7 @@
     "test:coverage": "jest --coverage",
     "build": "tsc",
     "build:test": "npm run format && npm run lint:fix && npm run build",
-    "start": "node -r newrelic dist/index.js",
+    "start": "node -r dist/index.js",
     "start:dev": "npm run build:test && nodemon --watch '**/*.ts' --exec ts-node ./index.ts",
     "start:debug": "nodemon --inspect-brk=5858 --watch '**/*.ts' --exec 'node -r ts-node/register' ./index.ts"
   },

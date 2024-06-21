@@ -6,6 +6,7 @@ import { IOtpBody, IUserBody } from '../../types/userTypes';
 import {
   checkUserExist,
   createUser,
+  saveUserToken,
   setUserVerified,
   uploadAvatar,
   verifyOtp,
@@ -25,11 +26,12 @@ export const registerUserUseCase = async (data: IUserBody): Promise<boolean> => 
 };
 
 export const verifyOtpUseCase = async (data: IOtpBody): Promise<{ token: string }> => {
-  const { mobileNumber, otp } = data;
+  const { mobileNumber, otp, deviceId, deviceType } = data;
   const otpCheck = await verifyOtp(mobileNumber, otp);
   if (!otpCheck) throw new AppError('Invalid OTP', HttpStatus.BAD_REQUEST);
   await setUserVerified(otpCheck._id);
   const token = generateToken({ role: 'user', userId: otpCheck._id });
+  await saveUserToken(otpCheck._id, deviceId, deviceType, token);
   return { token };
 };
 

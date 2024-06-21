@@ -4,7 +4,10 @@ info:
   description: API related to Activities models
   version: 1.0.0
 servers:
+  - url: http://localhost:3000
+    description: Local server
   - url: https://e-learn-k6lb.onrender.com
+    description: Live server
 paths:
   /api/activity/all:
     get:

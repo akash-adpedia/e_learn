@@ -7,9 +7,7 @@ exports.verifyToken = exports.generateToken = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const configKeys_1 = __importDefault(require("../configKeys"));
 function generateToken(payload) {
-    const token = jsonwebtoken_1.default.sign(payload, configKeys_1.default.JWT_SECRET, {
-        expiresIn: '2d',
-    });
+    const token = jsonwebtoken_1.default.sign(payload, configKeys_1.default.JWT_SECRET);
     return token;
 }
 exports.generateToken = generateToken;

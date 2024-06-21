@@ -18,12 +18,12 @@ const options = {
     apis: ['./swaggerdocs/*.yaml'],
 };
 const swaggerSpec = (0, swagger_jsdoc_1.default)(options);
-function setupSwagger(app, port) {
+function setupSwagger(app) {
     app.use('/api/docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerSpec));
     app.get('/docs.json', (req, res) => {
         res.setHeader('Content-Type', 'application/json');
         res.send(swaggerSpec);
     });
-    logger_1.default.info(`Docs available at /api/docs`);
+    logger_1.default.info('Docs available at /api/docs');
 }
 exports.default = setupSwagger;

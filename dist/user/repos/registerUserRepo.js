@@ -3,8 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.uploadAvatar = exports.setUserVerified = exports.verifyOtp = exports.createUser = exports.checkUserExist = void 0;
+exports.uploadAvatar = exports.saveUserToken = exports.setUserVerified = exports.verifyOtp = exports.createUser = exports.checkUserExist = void 0;
 const objectIdParser_1 = require("../../utils/objectIdParser");
+const userAuthModel_1 = __importDefault(require("../models/userAuthModel"));
 const userModel_1 = __importDefault(require("../models/userModel"));
 const checkUserExist = async (userName, mobileNumber) => {
     return await userModel_1.default
@@ -30,6 +31,10 @@ const setUserVerified = async (id) => {
     return await userModel_1.default.findOneAndUpdate({ _id, isDeleted: false }, { mobileNumberVerified: true, otp: '' }, { new: true });
 };
 exports.setUserVerified = setUserVerified;
+const saveUserToken = async (userId, deviceId, deviceType, authToken) => {
+    return await userAuthModel_1.default.create({ userId, deviceId, deviceType, authToken });
+};
+exports.saveUserToken = saveUserToken;
 const uploadAvatar = async (id, imageUrl) => {
     const _id = (0, objectIdParser_1.ObjectID)(id);
     return await userModel_1.default.findOneAndUpdate({ _id, isDeleted: false }, { avatar: imageUrl }, { new: true });
