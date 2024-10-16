@@ -1,5 +1,9 @@
 import express from 'express';
 import userRoutes from './user/routes/userRoutes';
+import packageRoutes from './package/routes/packageRoutes';
+import categoryRoutes from './category/routes/categoryRoutes';
+import subCategoryRoutes from './subcategory/routes/subCategoryRoutes';
+
 import logger from './config/logger';
 import connectToDatabase from './config/connectToDatabase';
 import errorHandleMiddleware from './middleware/errorHandleMiddleware';
@@ -14,6 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/user', userRoutes);
+app.use('/api/package', packageRoutes);
+app.use('/api/category', categoryRoutes);
+app.use('/api/subcategory', subCategoryRoutes);
 
 app.use(errorHandleMiddleware);
 
